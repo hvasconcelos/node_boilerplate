@@ -1,15 +1,6 @@
-var http = require('http');
-var sys = require('sys');
-var static = require('node-static');
+var Application= require('./lib/application.js');
 
-var file = new static.Server('./public', { cache: false });
-
-var server = http.createServer(function(request,response){
-
-	request.addListener('end',function(){
-		file.serve(request, response);
-	});
-
+new Application({
+	port: 8000
 });
-server.listen(8000);
 
